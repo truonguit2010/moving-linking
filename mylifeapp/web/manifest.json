@@ -1,7 +1,7 @@
 {
     "name": "mylifeapp",
     "short_name": "mylifeapp",
-    "start_url": ".",
+    "start_url": "https://truonguit2010.github.io/mylife/",
     "display": "standalone",
     "background_color": "#0175C2",
     "theme_color": "#0175C2",
