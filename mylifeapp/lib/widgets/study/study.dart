@@ -127,13 +127,13 @@ class _ImageColumn extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-//      child: Positioned.fill(
-//        child: Image.network(
-//          this.studyWidgetData.leftSideImageUrl,
-//          fit: BoxFit.fitWidth,
-//        ),
-//      ),
-        );
+    return Image.network(
+      this.studyWidgetData.leftSideImageUrl,
+      fit: BoxFit.fitWidth,
+      width: double.infinity,
+      height: 100,
+//        width: double.infinity,
+//        height: double.infinity,
+    );
   }
 }
