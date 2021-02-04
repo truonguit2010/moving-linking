@@ -26,40 +26,114 @@ class StudyWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
-    throw UnimplementedError();
+    return Container(
+      child: Row(
+        children: [
+          Expanded(
+            child: _InfoColumn(
+              studyWidgetData: studyWidgetData,
+            ),
+            flex: 3,
+          ),
+          Expanded(
+            child: _ImageColumn(
+              studyWidgetData: studyWidgetData,
+            ),
+            flex: 1,
+          )
+        ],
+      ),
+    );
   }
 }
 
-class Title extends StatelessWidget {
-  final String text;
+class _InfoColumn extends StatelessWidget {
+  final StudyWidgetData studyWidgetData;
 
-  Title(this.text);
+  _InfoColumn({this.studyWidgetData});
 
   @override
   Widget build(BuildContext context) {
-    throw UnimplementedError();
+    return Container(
+      child: Column(
+        children: [
+          _Title(
+            text: studyWidgetData.title,
+          ),
+          _SubTitle(
+            text: studyWidgetData.subTitle,
+          ),
+          _Content(
+            text: studyWidgetData.content,
+          )
+        ],
+      ),
+    );
   }
 }
 
-class SubTitle extends StatelessWidget {
+class _Title extends StatelessWidget {
   final String text;
 
-  SubTitle(this.text);
+  final _textStyle = TextStyle(fontSize: 24, color: Colors.white);
+
+  _Title({this.text});
 
   @override
   Widget build(BuildContext context) {
-    throw UnimplementedError();
+    return Text(
+      text,
+      style: _textStyle,
+    );
   }
 }
 
-class Content extends StatelessWidget {
+class _SubTitle extends StatelessWidget {
   final String text;
 
-  Content(this.text);
+  final _textStyle = TextStyle(fontSize: 16, color: Colors.white);
+
+  _SubTitle({this.text});
 
   @override
   Widget build(BuildContext context) {
-    throw UnimplementedError();
+    return Text(
+      text,
+      style: _textStyle,
+    );
+  }
+}
+
+class _Content extends StatelessWidget {
+  final String text;
+
+  final _textStyle = TextStyle(fontSize: 12, color: Colors.white);
+
+  _Content({this.text});
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      text,
+      style: _textStyle,
+    );
+  }
+}
+
+class _ImageColumn extends StatelessWidget {
+  final StudyWidgetData studyWidgetData;
+
+  _ImageColumn({this.studyWidgetData});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+//      child: Positioned.fill(
+//        child: Image.network(
+//          this.studyWidgetData.leftSideImageUrl,
+//          fit: BoxFit.fitWidth,
+//        ),
+//      ),
+        );
   }
 }

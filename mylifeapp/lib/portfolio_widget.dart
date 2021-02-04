@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:mylifeapp/widgets/particle_background/particle_background.dart';
+import 'package:mylifeapp/widgets/study/study.dart';
 import 'widgets/game/game.dart';
 
 class PortfolioWidget extends StatelessWidget {
@@ -14,7 +15,8 @@ class PortfolioWidget extends StatelessWidget {
           _Bio(),
           _Skills(),
           _Games((g) {}),
-          _StartLearningWidget()
+          _StartLearningWidget(),
+          _Studies(),
         ],
       ),
     );
@@ -238,6 +240,44 @@ class _StartLearningWidget extends StatelessWidget {
             )),
           ],
         ),
+      ),
+    );
+  }
+}
+
+class _Studies extends StatelessWidget {
+  final List<StudyWidgetData> _studyWidgetDatas = [
+    // iOS Starter Kit
+    StudyWidgetData(
+      title: 'iOS Starter kit',
+      subTitle: 'Easy and Formated for all projects.',
+      content:
+          'A chemistry textbook that explained what’s really going on, rather than just stating facts. Designed for iPad and Mac, and filled with interactive 3D diagrams and quizzes, as well as beautiful photos. \nFeatured by Apple and downloaded by new students every exam season.',
+      buttonText: 'Explore',
+      leftSideImageUrl:
+          'https://blog.cleancoder.com/uncle-bob/images/2012-08-13-the-clean-architecture/CleanArchitecture.jpg',
+    ),
+    // Flutter Starter Kit
+    StudyWidgetData(
+      title: 'Flutter Starter kit',
+      subTitle: 'Easy and Formated for all projects.',
+      content:
+          'A chemistry textbook that explained what’s really going on, rather than just stating facts. Designed for iPad and Mac, and filled with interactive 3D diagrams and quizzes, as well as beautiful photos. \nFeatured by Apple and downloaded by new students every exam season.',
+      buttonText: 'Explore',
+      leftSideImageUrl:
+          'https://blog.cleancoder.com/uncle-bob/images/2012-08-13-the-clean-architecture/CleanArchitecture.jpg',
+    ),
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: Column(
+        children: _studyWidgetDatas.map((e) {
+          return StudyWidget(
+            studyWidgetData: e,
+          );
+        }).toList(),
       ),
     );
   }
