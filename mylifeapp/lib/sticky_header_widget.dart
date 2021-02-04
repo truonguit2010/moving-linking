@@ -21,10 +21,11 @@ typedef OnUserSelectHeader<Header> = void Function(Header value);
 
 class StickyHeaderWidget extends StatelessWidget {
   List<Header> _headers = [Header.Portfolio, Header.Thoughts, Header.Contact];
+  final OnUserSelectHeader<Header> onUserSelectHeader;
 
   final Header focusHeader;
 
-  StickyHeaderWidget(this.focusHeader);
+  StickyHeaderWidget({this.focusHeader, this.onUserSelectHeader});
 
   @override
   Widget build(BuildContext context) {
@@ -34,14 +35,17 @@ class StickyHeaderWidget extends StatelessWidget {
         _HeaderItemWidget(
           header: Header.Portfolio,
           isFocus: focusHeader == Header.Portfolio,
+          onUserSelectHeader: this.onUserSelectHeader,
         ),
         _HeaderItemWidget(
           header: Header.Thoughts,
           isFocus: focusHeader == Header.Thoughts,
+          onUserSelectHeader: this.onUserSelectHeader,
         ),
         _HeaderItemWidget(
           header: Header.Contact,
           isFocus: focusHeader == Header.Contact,
+          onUserSelectHeader: this.onUserSelectHeader,
         ),
       ],
     );
@@ -61,15 +65,17 @@ class _NameWidget extends StatelessWidget {
 class _HeaderItemWidget extends StatelessWidget {
   final Header header;
   final bool isFocus;
-
-  _HeaderItemWidget({this.header, this.isFocus});
+  final OnUserSelectHeader<Header> onUserSelectHeader;
+  _HeaderItemWidget({this.header, this.isFocus, this.onUserSelectHeader});
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.only(left: 10, right: 10),
       child: FlatButton(
-        onPressed: () => {},
+        onPressed: () {
+          this.onUserSelectHeader.call(header);
+        },
         child: Text(
           header.textValue,
           style: TextStyle(color: isFocus ? Colors.grey : Colors.white),

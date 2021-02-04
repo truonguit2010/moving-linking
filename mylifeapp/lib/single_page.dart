@@ -22,6 +22,7 @@ class SinglePage extends StatefulWidget {
 
 class _SinglePageState extends State<SinglePage> {
   int _counter = 0;
+  Header _selectedeader = Header.Portfolio;
 
   void _incrementCounter() {
     setState(() {
@@ -55,7 +56,14 @@ class _SinglePageState extends State<SinglePage> {
             child: SingleChildScrollView(
               child: Column(
                 children: [
-//                  StickyHeaderWidget(),
+                  StickyHeaderWidget(
+                    focusHeader: this._selectedeader,
+                    onUserSelectHeader: (selectedHeader) {
+                      setState(() {
+                        _selectedeader = selectedHeader;
+                      });
+                    },
+                  ),
                   PortfolioWidget(),
                 ],
               ),
