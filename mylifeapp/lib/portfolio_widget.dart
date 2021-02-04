@@ -1,6 +1,7 @@
 //PortfolioWidget
 
 import 'package:flutter/material.dart';
+import 'package:mylifeapp/widgets/particle_background/particle_background.dart';
 import 'widgets/game/game.dart';
 
 class PortfolioWidget extends StatelessWidget {
@@ -8,7 +9,13 @@ class PortfolioWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: Column(
-        children: [_PortfolioHeader(), _Bio(), _Skills(), _Games((g) {})],
+        children: [
+          _PortfolioHeader(),
+          _Bio(),
+          _Skills(),
+          _Games((g) {}),
+          _StartLearningWidget()
+        ],
       ),
     );
   }
@@ -204,6 +211,33 @@ class _Games extends StatelessWidget {
             ),
           )
         ],
+      ),
+    );
+  }
+}
+
+class _StartLearningWidget extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return ClipRect(
+      child: SizedBox(
+        width: double.infinity,
+        height: 300,
+        child: Stack(
+          children: <Widget>[
+            Positioned.fill(child: AnimatedBackground()),
+            Positioned.fill(child: Particles(30)),
+            Positioned.fill(
+                child: Center(
+              child: Text(
+                "Study",
+                style:
+                    TextStyle(color: Colors.white, fontWeight: FontWeight.w200),
+                textScaleFactor: 4,
+              ),
+            )),
+          ],
+        ),
       ),
     );
   }

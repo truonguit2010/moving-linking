@@ -6,7 +6,16 @@ class GameShowcaseData {
   final String subTitle;
   final String buttonText;
 
-  GameShowcaseData({this.iconUrl, this.title, this.subTitle, this.buttonText});
+  final String appStoreLink;
+  final String googlePlayLink;
+
+  GameShowcaseData(
+      {this.iconUrl,
+      this.title,
+      this.subTitle,
+      this.buttonText,
+      this.appStoreLink,
+      this.googlePlayLink});
 }
 
 typedef OnUserClickGameEvent<T> = void Function(T value);
