@@ -1,13 +1,14 @@
 //PortfolioWidget
 
 import 'package:flutter/material.dart';
+import 'widgets/game/game.dart';
 
 class PortfolioWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: Column(
-        children: [_PortfolioHeader(), _Bio(), _Skills()],
+        children: [_PortfolioHeader(), _Bio(), _Skills(), _Games((g) {})],
       ),
     );
   }
@@ -154,6 +155,56 @@ class _UnderTitleLine extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       color: Colors.red,
+    );
+  }
+}
+
+class _Games extends StatelessWidget {
+//  https://play-lh.googleusercontent.com/mp72JlhWGsRmKGtQcoKkyn4f7InbBBRLSTw1WG2Vs1PIMyn2m9ysoU0bWinlvHJOAO8=s360
+  final List<GameShowcaseData> _gameShowcaseDatas = [
+    // Merge Tanks
+    GameShowcaseData(
+        iconUrl:
+            'https://play-lh.googleusercontent.com/mp72JlhWGsRmKGtQcoKkyn4f7InbBBRLSTw1WG2Vs1PIMyn2m9ysoU0bWinlvHJOAO8=s360',
+        title: 'Merge Tanks',
+        subTitle: 'Casual - Idle',
+        buttonText: 'Play Now!'),
+
+    // Tedoku
+    GameShowcaseData(
+        iconUrl:
+            'https://play-lh.googleusercontent.com/mp72JlhWGsRmKGtQcoKkyn4f7InbBBRLSTw1WG2Vs1PIMyn2m9ysoU0bWinlvHJOAO8=s360',
+        title: 'Tedoku',
+        subTitle: 'Simple Fun Block Puzzle Game',
+        buttonText: 'Play Now!'),
+
+    // Triple Crush
+    GameShowcaseData(
+        iconUrl:
+            'https://play-lh.googleusercontent.com/mp72JlhWGsRmKGtQcoKkyn4f7InbBBRLSTw1WG2Vs1PIMyn2m9ysoU0bWinlvHJOAO8=s360',
+        title: 'Triple Crush',
+        subTitle: 'Simple Fun Tile Matching Game',
+        buttonText: 'Play Now!')
+  ];
+
+  final OnUserClickGameEvent<GameShowcaseData> onUserClickGameEvent;
+
+  _Games(this.onUserClickGameEvent);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: Column(
+        children: [
+          _SectionHeader('Games'),
+          Container(
+            child: RowOfGames(
+              gameShowCases: _gameShowcaseDatas,
+              onUserClickGameEvent: onUserClickGameEvent,
+            ),
+          )
+        ],
+      ),
     );
   }
 }
